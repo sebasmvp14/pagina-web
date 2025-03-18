@@ -1,1 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - FlowNorte</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #111212;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background: url('https://images.steamusercontent.com/ugc/713035001758018211/258F713EAF941EF7E82827AB667600C4FA07CB3A/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true') no-repeat center center;
+            background-size: cover;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .logo {
+            height: 200px;
+        }
+        .discord {
+            background: #5865F2;
+            padding: 10px 30px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            position: absolute;
+            top: 150px;
+            right: 20px;
+        }
+        .juega-ya {
+            position: absolute;
+            top: 150px;
+            left: 30px;
+            display: flex;
+            align-items: center;
+        }
+        .juega-ya img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .info-container, .importante-container {
+            background: #1b1c1c;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            font-size: 14px;
+        }
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .gif-container img {
+            height: 100px;
+        }
+        .productos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 80px;
+        }
+        .producto {
+            background: #1b1c1c;
+            padding: -5px;
+            border-radius: 8px;
+            text-align: center;
+            width: 1000px;
+            margin: 10px;
+        }
+        .producto img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .producto a {
+            display: block;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .sidebar {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sidebar a {
+            background: #1b1c1c;
+            padding: -15px;
+            border-radius: 7px;
+            color: white;
+            text-decoration: none;
+            font-size: 23px;
+        }
+        .sidebar aj {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sidebar aje {
+            background: #1b1c1c;
+            padding: -15px;
+            border-radius: 7px;
+            color: white;
+            text-decoration: none;
+            font-size: 23px;
+        }
+    </style>
+<script>
+    function mostrarProductos(categoria) {
+        // Ocultar todas las secciones al mostrar una nueva
+        document.getElementById('inicio').style.display = 'none';
+        document.getElementById('productos').style.display = 'none';
+        document.getElementById('informacion').style.display = 'none';
 
+        if (categoria === 'inicio') {
+            document.getElementById('inicio').style.display = 'block';
+        } else if (categoria === 'informacion') {
+            document.getElementById('informacion').style.display = 'block';
+        } else {
+            document.getElementById('productos').style.display = 'block';
+
+            const productos = {
+                coins: [
+                    { nombre: '5 Coins', precio: 3, imagen: 'https://media.discordapp.net/attachments/1344870794680991814/1351326128857415710/1742251623334.png?ex=67d9f807&is=67d8a687&hm=9882580745f93bf738a00cb7f057c796e7f2ef871225e68424362ae5237ee85f&=&format=webp&quality=lossless&width=510&height=511' },
+                    { nombre: '10 Coins', precio: 5, imagen: 'https://media.discordapp.net/attachments/1344870794680991814/1351326128857415710/1742251623334.png?ex=67d9f807&is=67d8a687&hm=9882580745f93bf738a00cb7f057c796e7f2ef871225e68424362ae5237ee85f&=&format=webp&quality=lossless&width=510&height=511' },
+                    { nombre: '15 Coins', precio: 10, imagen: 'https://media.discordapp.net/attachments/1344870794680991814/1351326128857415710/1742251623334.png?ex=67d9f807&is=67d8a687&hm=9882580745f93bf738a00cb7f057c796e7f2ef871225e68424362ae5237ee85f&=&format=webp&quality=lossless&width=510&height=511' },
+                    { nombre: '20 Coins', precio: 15, imagen: 'https://media.discordapp.net/attachments/1344870794680991814/1351326128857415710/1742251623334.png?ex=67d9f807&is=67d8a687&hm=9882580745f93bf738a00cb7f057c796e7f2ef871225e68424362ae5237ee85f&=&format=webp&quality=lossless&width=510&height=511' },
+                    { nombre: '25 Coins', precio: 20, imagen: 'https://media.discordapp.net/attachments/1344870794680991814/1351326128857415710/1742251623334.png?ex=67d9f807&is=67d8a687&hm=9882580745f93bf738a00cb7f057c796e7f2ef871225e68424362ae5237ee85f&=&format=webp&quality=lossless&width=510&height=511' },
+                    { nombre: '30 Coins', precio: 25, imagen: 'https://media.discordapp.net/attachments/1344870794680991814/1351326128857415710/1742251623334.png?ex=67d9f807&is=67d8a687&hm=9882580745f93bf738a00cb7f057c796e7f2ef871225e68424362ae5237ee85f&=&format=webp&quality=lossless&width=510&height=511' }
+                ],
+                premium: [
+                    { nombre: 'VIP SUPREMO', precio: 6, imagen: 'https://dunb17ur4ymx4.cloudfront.net/packages/images/917e171e263c49e8668184bc0e900208cc49f135.gif' },
+                    { nombre: 'VIP SOCIO', precio: 3, imagen: 'https://dunb17ur4ymx4.cloudfront.net/packages/images/d28cac64d937e56658dbf89d2a80855b9294827e.gif' }
+                ],
+                negocios: [
+                    { nombre: 'Taller Mecánico', precio: 5, imagen: 'https://dunb17ur4ymx4.cloudfront.net/packages/images/dea8d2ef045831661dee637bd5395b318d7ab9e8.jpg' }
+                ]
+            };
+
+            document.getElementById('productos').innerHTML = productos[categoria]?.map(prod => `
+    <div class='producto'>
+        <img src="${prod.imagen}" alt="${prod.nombre}">
+        <p>${prod.nombre} - $${prod.precio.toFixed(2)}</p>
+        <a href='https://www.paypal.com/paypalme/marianalover2012@gmail.com/${prod.precio}' target='_blank'>Agregar al carrito</a>
+    </div>
+`).join('') || '';
+        }
+    }
+</script>
+</head>
+<body onload="mostrarProductos('inicio')">
+    <header class="header">
+        <div class="juega-ya">
+            <img src="https://webstore-template-assets.tebex.io/images/server-logo.svg" alt="Juega Ya">
+            <span>¡ Juega ya ¡</span>
+            <div class="importante">
+                <h3>🚩 IMPORTANTE</h3>
+                <p>RECUERDA INGRESAR CON TU CUENTA DE DISCORD Y LUEGO MOSTRAR EN TICKETS TU FACTURA DE PAGO.</p>
+            </div>
+            
+        </div>
+        <img src="https://media.discordapp.net/attachments/1344870794680991814/1351304693288276099/1742246479779.png?ex=67d9e410&is=67d89290&hm=5f0a994cad6533d4010f2cba08add7d73a412f278976e756880d9c6be90c1ab1&=&format=webp&quality=lossless&width=772&height=482" alt="" style="max-width: 80%; margin-top: 15px; border-radius: 10px;">
+        <a href="https://discord.gg/3wvn5FAtME" class="discord">Únete a Discord</a>
+    </header>
+    <nav class="sidebar">
+        <a href="#" onclick="mostrarProductos('inicio')">Inicio</a>
+        <a href="#" onclick="mostrarProductos('coins')">Coins</a>
+        <a href="#" onclick="mostrarProductos('premium')">Premium</a>
+        <a href="#" onclick="mostrarProductos('negocios')">Negocios</a>
+        <a href="#" onclick="mostrarProductos('informacion')">Información</a> <!-- Nueva sección -->
+    </nav>
+    <section id="inicio">
+        <div class="gif-container">
+            <img src="https://dunb17ur4ymx4.cloudfront.net/categories/images/03dc959b5bad6b911db557af8ab852daba830231.gif">
+            <img src="https://dunb17ur4ymx4.cloudfront.net/categories/images/6ffe6fe51e9e9f89b876387636c75b49bc51fd7d.gif">
+            <img src="https://dunb17ur4ymx4.cloudfront.net/categories/images/7c31399cd619502bca9c2817f2336522c8181a1e.gif">
+        </div>
+        <div class="importante-container">
+            Tienda oficial de FlowNorte. Realiza la compra y deja tu comprobante en DISCORD junto con tu nombre de cuenta para validar la compra.  
+    <img src="https://cdn.pixabay.com/animation/2023/06/08/15/03/15-03-45-927_512.gif" alt="" style="max-width: 80%; margin-top: 15px; border-radius: 10px;">
+</section>
+        </div>
+    </section>
+    <section id="productos" class="productos" style="display:none;"></section>
+<section id="informacion" style="display:none;">
+    <h2>Información Adicional</h2>
+    <p>Bienvenido a la sección de información de FlowNorte.</p>
+    <p>Aquí puedes encontrar datos relevantes sobre nuestros servicios y cómo adquirir productos exclusivos.</p>
+    <p>Si tienes alguna consulta, no dudes en unirte a nuestro servidor de Discord para recibir ayuda personalizada.</p>
+    <img src="https://images-ext-1.discordapp.net/external/hGg7t2zUgo0dFc1bqNdii7OuwTRp8Lh6WXgFjzvHGdI/https/share.creavite.co/67b9cf6794df272b3dab3c1c.gif?width=360&height=21" alt="" style="max-width: 80%; margin-top: 15px; border-radius: 10px;">
+    </section>
+<footer class="footer">
+    © 2025 FlowNorte. Todos los derechos reservados.
+</footer>
+</body>
+</html>
